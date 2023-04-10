@@ -1,0 +1,126 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "image": "./1ngaybang48h.jpg",
+      "name": "Một ngày bằng 48 giờ ?",
+      "price": "11000",
+      "description": "Một ngày bằng 48 giờ",
+      "idCate": "1"
+    },
+    {
+      "id": 2,
+      "image": "./5phut.jpg",
+      "name": "5 Phút Tự Rèn Luyện Tính Kỉ Luật",
+      "price": 11000,
+      "description": "5 Phút Tự Rèn Luyện Tính Kỉ Luật",
+      "idCate": 1
+    },
+    {
+      "id": 4,
+      "name": "Apple Iphone 13",
+      "price": 11000,
+      "image": "./appleIphone13.png",
+      "description": "Apple Iphone 13",
+      "idCate": 2
+    },
+    {
+      "id": 5,
+      "name": "Apple Iphone 14 PRM",
+      "price": 11000,
+      "image": "./appleIphone14prm.png",
+      "description": "Apple Iphone 14 PRM",
+      "idCate": 2
+    },
+    {
+      "id": 7,
+      "name": "Kỉ Luật Là Sức Mạnh",
+      "price": 11000,
+      "image": "./kiluatlasucmanh.jpg",
+      "description": "Kỉ Luật Là Sức Mạnh",
+      "idCate": 1
+    },
+    {
+      "id": 8,
+      "name": "Thao Túng Tâm Lý",
+      "price": 11000,
+      "image": "./thaotungtamly.jpg",
+      "description": "Thao Túng Tâm Lý",
+      "idCate": 1
+    },
+    {
+      "id": 9,
+      "name": "Hài Hước Một Chút Thế Giới Sẽ Khác Đi",
+      "price": 11000,
+      "image": "./haihuocmotchut.png",
+      "description": "Hài Hước Một Chút Thế Giới Sẽ Khác Đi",
+      "idCate": 1
+    },
+    {
+      "name": "qwertyuio",
+      "price": "11111",
+      "description": "232435",
+      "idCate": 1,
+      "id": 10
+    },
+    {
+      "name": "quang huy 1",
+      "price": "10000",
+      "description": "quang huy",
+      "idCate": 8,
+      "id": 11
+    },
+    {
+      "name": "test remove",
+      "price": "100",
+      "description": "100",
+      "idCate": 7,
+      "id": 12
+    },
+    {
+      "name": "             ",
+      "price": "             ",
+      "description": "             ",
+      "idCate": 3,
+      "id": 13
+    }
+  ],
+  "categories": [
+    {
+      "id": 2,
+      "cateName": "Sản phẩm công nghệ"
+    },
+    {
+      "id": 3,
+      "cateName": "Laptop"
+    },
+    {
+      "cateName": "Macbook",
+      "id": 7
+    },
+    {
+      "cateName": "Quang Huy",
+      "id": 8
+    },
+    {
+      "cateName": "hhhh",
+      "id": 9
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Đặng Quang Huy",
+      "email": "dangquanghuy@gmail.com",
+      "phone": "0123456789",
+      "role": "member"
+    },
+    {
+      "id": 2,
+      "name": "Quang Huy",
+      "email": "huydqph24532@fpt.edu.vn",
+      "phone": "9876543210",
+      "role": "admin"
+    }
+  ]
+}
