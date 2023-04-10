@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { IProduct } from '../interface/interface';
 import { Link } from 'react-router-dom';
+import { getAll } from '../api/product';
 
 interface DataType {
-  key: string | number;
-  name: string;
-  price: number;
-  image: string,
+  key: string | number,
+  name: string,
+  price: number,
   description: string,
-  idCate: number
+  categoryId: number
 }
 export interface IProps {
   products: IProduct[],
@@ -19,14 +19,34 @@ export interface IProps {
 
 const ProductsPage = (props: IProps) => {
 
-  const data: DataType[] = props.products.map(item => {
+
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    getProducts();
+  }, []);
+// console.log(product);
+  const getProducts = async () => {
+    const response = await getAll();
+    // console.log(response);
+    if (response.data && Array.isArray(response.data.datas)) {
+      const data = response.data.datas.map((product:IProduct) => ({
+        id: product._id,
+        name: product.name,
+        price: product.price,
+        description: product.description,
+      }));
+      setProduct(data);
+      console.log(data);
+    }
+  };
+
+  const data: DataType[] = product.map(item => {
     return {
       key: item.id,
       name: item.name,
       price: item.price,
-      image: item.image,
       description: item.description,
-      idCate: item.idCate
+      categoryId: item.categoryId
     }
   })
 
@@ -38,21 +58,21 @@ const ProductsPage = (props: IProps) => {
       render: (text, record, index) => index + 1
     },
     {
+      title: 'ID',
+      dataIndex: 'key',
+      key: 'key'
+    },
+    {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      render: (text) => <a>{text}</a>,
+      // render: (text) => <a>{text}</a>,
     },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
-    },
-    {
-      title: 'Image',
-      dataIndex: 'image',
-      key: 'image',
-      render: (Image) => <img style={{ width: '200px' }} src={Image} alt="" />
+      render:(text) => <a href="">{text}</a>
     },
     {
       title: 'Description',

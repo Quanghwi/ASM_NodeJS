@@ -11,13 +11,7 @@ import type { UploadFile } from 'antd/es/upload/interface';
 interface IProps {
   onAdd: (product: IProduct) => void
 }
-interface DataType {
-  value: string | number,
-  label: string
-}
-interface IProps {
-  categories: ICategory[],
-}
+
 
 const getBase64 = (file: RcFile): Promise<string> =>
   new Promise((resolve, reject) => {
@@ -58,23 +52,7 @@ const AddProduct = (props: IProps) => {
   const onFinish = (values: any) => {
     props.onAdd(values)
     navigate('/admin/products')
-    // window.location.reload()
   };
-  const onChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
-
-  const onSearch = (value: string) => {
-    console.log('search:', value);
-  };
-  const data: DataType[] = props.categories.map((item) => {
-    return {
-      // key: item.id,
-      // name: item.cateName
-      value: item.id,
-      label: item.cateName
-    }
-  })
 
   return (
     <div>
@@ -134,22 +112,11 @@ const AddProduct = (props: IProps) => {
                 <Input />
               </Form.Item>
               <Form.Item
-                label="Phân loại"
-                name="idCate"
-                rules={[{ required: true, message: 'Chọn phân loại sản phẩm!' }]}
+                label="Category"
+                name="categoryId"
+                rules={[{ required: true, message: 'Nhập mô tả sản phẩm!' }]}
               >
-                <Select
-                  showSearch
-                  style={{ width: 160 }}
-                  placeholder="Select category"
-                  optionFilterProp="children"
-                  onChange={onChange}
-                  onSearch={onSearch}
-                  filterOption={(input, option) =>
-                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                  }
-                  options={data}
-                />
+                <Input />
               </Form.Item>
             </Col>
             <Form.Item>

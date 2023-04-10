@@ -16,7 +16,7 @@ import UpdateCategory from './page/admin/Category/UpdateCategory'
 import { ICategory, IProduct, IUser } from './interface/interface'
 import { addCategory, deleteCategory, getAllCategory, updateCategory } from './api/category'
 import UsersManagement from './page/admin/Users/UsersManagement'
-import { getAllUsers } from './api/users'
+// import { getAllUsers } from './api/users'
 import Signup from './page/admin/Users/Signup'
 import Signin from './page/admin/Users/Signin'
 
@@ -24,11 +24,7 @@ import Signin from './page/admin/Users/Signin'
 function App() {
   const [products, setProducts] = useState<IProduct[]>([])
   const [categories, setCategories] = useState<ICategory[]>([])
-  const [users, setUsers] = useState<IUser[]>([])
-  useEffect(() => {
-    getAllUsers().then(({ data }) => setUsers(data))
-    // console.log(users);
-  }, [])
+
   useEffect(() => {
     getAll().then(({ data }) => setProducts(data))
     // console.log(products);
@@ -38,9 +34,7 @@ function App() {
     // console.log(categories);
   }, [])
   const onHandleRemove = (id: number) => {
-    deleteProduct(id).then(() => {
-      setProducts(products.filter((item: IProduct) => item.id !== id))
-    })
+    deleteProduct(id).then(()=>window.location.reload())
   }
 
   const onHandleAdd = (product: IProduct) => {
@@ -92,7 +86,7 @@ function App() {
             <Route path=':id/update' element={<UpdateCategory categories={categories} onUpdate={HandleUpdate} />} />
           </Route>
 
-          <Route path='users' element={<UsersManagement users={users} />} />
+          {/* <Route path='users' element={<UsersManagement users={users} />} /> */}
 
         </Route>
       </Routes>
