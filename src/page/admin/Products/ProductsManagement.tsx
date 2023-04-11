@@ -43,6 +43,7 @@ const ProductsManagement = (props: IProps) => {
       console.log(data);
     }
   };
+
   const data: DataType[] = product.map(item => {
     return {
       key: item.id,

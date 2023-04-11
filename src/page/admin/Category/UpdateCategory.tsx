@@ -3,6 +3,7 @@ import { ICategory } from '../../../interface/interface'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Button, Card, Col, Form, Input, Row } from 'antd'
+import { getAllCategory } from '../../../api/category'
 
 
 interface IProps {
@@ -11,9 +12,25 @@ interface IProps {
 }
 
 const UpdateCategory = (props: IProps) => {
+  const [category, setCategory] = useState([])
+  useEffect(() => {
+    getCategory()
+  }, [])
+  const getCategory = async () => {
+    const res = await getAllCategory()
+    // console.log(res);
+    if (res.data && Array.isArray(res.data.datas)) {
+      const data = res.data.datas.map((category: ICategory) => ({
+        id: category._id,
+        name: category.name
+      }))
+      setCategory(data)
+      console.log(data);
+    }
+  }
   const { id } = useParams()
   const navigate = useNavigate()
-  const currentCate = props.categories.find((categories: ICategory) => categories.id == Number(id))
+  const currentCate = category.find((categories: ICategory) => categories._id == Number(id))
   console.log(id);
 
   const [cate, setCate] = useState<ICategory>()
@@ -26,7 +43,7 @@ const UpdateCategory = (props: IProps) => {
   const setFields = () => {
     form.setFieldsValue({
       id: cate?.id,
-      name: cate?.cateName
+      name: cate?.name
     })
   }
   useEffect(() => {

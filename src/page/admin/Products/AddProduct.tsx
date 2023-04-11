@@ -82,7 +82,7 @@ const AddProduct = (props: IProps) => {
                   >
                     {fileList.length >= 8 ? null : uploadButton}
                   </Upload>
-                  <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+                  <Modal open={previewOpen} title={previewTitle}  onCancel={handleCancel}>
                     <img alt="example" style={{ width: '100%' }} src={previewImage} />
                   </Modal>
                 </>
@@ -118,6 +118,7 @@ const AddProduct = (props: IProps) => {
               >
                 <Input />
               </Form.Item>
+              
             </Col>
             <Form.Item>
               <Button type="primary" htmlType="submit" style={{ margin: '20px' }}>

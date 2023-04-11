@@ -1,5 +1,6 @@
 export interface IProduct {
-    _id: number,
+    id: number
+    _id: number | string,
     name: string,
     price: number,
     description: string,
@@ -7,8 +8,9 @@ export interface IProduct {
 }
 
 export interface ICategory {
+    _id: any
     id: number,
-    cateName: string
+    name: string
 }
 
 export interface IUser {

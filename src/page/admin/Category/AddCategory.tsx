@@ -33,20 +33,17 @@ const AddCategory = (props: Iprops) => {
             <Col>
               <Form.Item
                 label="Tên danh mục "
-                name="cateName"
+                name="name"
                 rules={[{ required: true, message: 'Nhập tên sản phẩm!' }]}
               >
                 <Input />
               </Form.Item>
-
               <Form.Item>
                 <Button type="primary" htmlType="submit" style={{ margin: '20px' }}>
                   Thêm mới
                 </Button>
               </Form.Item>
-
             </Col>
-
           </Row>
         </Card>
       </Form>

@@ -30,7 +30,7 @@ const UpdateProductPage = (props: IProps) => {
   const data: DataType[] = props.categories.map((item) => {
     return {
       value: item.id,
-      label: item.cateName
+      label: item.name
     }
   })
   console.log(data);
@@ -46,9 +46,8 @@ const UpdateProductPage = (props: IProps) => {
       id: product?.id,
       name: product?.name,
       price: product?.price,
-      image: product?.image,
       description: product?.description,
-      idCate: product?.idCate
+      idCate: product?.id
     })
   }
 
@@ -82,13 +81,6 @@ const UpdateProductPage = (props: IProps) => {
                 rules={[{ required: true, message: 'Please input your username!' }]}
               >
                 <Input />
-              </Form.Item>
-
-              <Form.Item label="Ảnh sản phẩm" name="image" >
-                <Image
-                  width={200} style={{ marginTop: '40px' }}
-                  src={`http://localhost:5173/${currentProduct?.image}`}
-                />
               </Form.Item>
             </Col>
 

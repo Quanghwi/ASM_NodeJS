@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Link } from 'react-router-dom';
 import { ICategory } from '../../../interface/interface';
+import { getAllCategory } from '../../../api/category';
 
 interface DataType {
   key: string | number;
@@ -15,17 +16,38 @@ interface IProps {
   onRemove: (idCate: number) => void
 }
 const CategoryManagement = (props: IProps) => {
+  const [category, setCategory] = useState([])
+  // console.log(category);
+
+  useEffect(() => {
+    getCategory()
+  }, [])
+
+  const getCategory = async () => {
+    const res = await getAllCategory()
+    // console.log(res);
+    if (res.data && Array.isArray(res.data.datas)) {
+      const data = res.data.datas.map((category: ICategory) => ({
+        id: category._id,
+        name: category.name
+      }))
+      setCategory(data)
+      console.log(data);
+      
+    }
+  }
 
   const RemoveCategory = (idCate: number) => {
     props.onRemove(idCate)
-    console.log(idCate);
+    // console.log(idCate);
 
   }
 
-  const data: DataType[] = props.categories.map((item) => {
+
+  const data: DataType[] = category.map((item) => {
     return {
       key: item.id,
-      name: item.cateName
+      name: item.name
     }
   })
 
@@ -40,7 +62,7 @@ const CategoryManagement = (props: IProps) => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      render: (text) => <p>{text}</p>,
+      // render: (text) => <p>{text}</p>,
     },
     {
       title: 'Action',
@@ -56,7 +78,7 @@ const CategoryManagement = (props: IProps) => {
 
 
   return (
-    <Table columns={columns} dataSource={data} pagination={{ pageSize: 10 }} />
+    <Table rowKey={(record) => record.key} columns={columns} dataSource={data} pagination={{ pageSize: 10 }} />
   )
 }
 

@@ -47,7 +47,7 @@ function App() {
 
   const HandleRemove = (idCate: number) => {
     deleteCategory(idCate).then(() => {
-      setCategories(categories.filter((item: ICategory) => item.id !== idCate))
+      window.location.reload()
     })
   }
 
@@ -74,7 +74,7 @@ function App() {
         <Route path='/admin' element={< AdminLayout />}>
           <Route index element={< Dashboard />} />
 
-          <Route path='addProduct' element={< AddProduct categories={categories} onAdd={onHandleAdd} />} />
+          <Route path='addProduct' element={< AddProduct onAdd={onHandleAdd} />} />
           <Route path='products'>
             <Route index element={<ProductsManagement products={products} onRemove={onHandleRemove} />} />
             <Route path=':id/update' element={<UpdateProduct products={products} onUpdate={onHandleUpdate} categories={categories} />} />
